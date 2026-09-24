@@ -32,18 +32,24 @@ public class JogoDoBixo {
         }
     }
 
-    public void fazAposta(int[] aposta){
-
+    public void fazAposta(){
+        int[] aposta = new int[5];
+        for(int i = 0; i < 5; i++){
+            aposta[i] = (int) (Math.random() * 25);
+        }
         this.setAposta(aposta);
     }
     public void imprimeAposta(){
         int[] apostaCrescente = this.getAposta();
         Arrays.sort(apostaCrescente);
+        String imprimir = "";
 
         for(int i = 0; i < apostaCrescente.length; i++){
-            System.out.print(this.pegaBicho(apostaCrescente[i] - 1) + " ");
+            if(!imprimir.contains(this.pegaBicho(apostaCrescente[i]))){
+                imprimir += this.pegaBicho(apostaCrescente[i]) + " ";
+            }
         }
-        System.out.println();
+        System.out.println(imprimir);
 
     }
 }
